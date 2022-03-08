@@ -1,0 +1,117 @@
+# brandon bouley
+# bbouley@bu.edu
+
+puzzles with 5-move optimal solutions
+-------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+random                       10            5.0                138.8           
+BFS                          10            5.0                47.1
+DFS (depth limit 20)         10            16.2               19072.7
+DFS (depth limit 50)         10            48.2               49043.0
+Greedy Search (using h1)     10            5.4                70.4
+A* (using h1)                10            5.0                6.7
+
+puzzles with 10-move optimal solutions
+-------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+random                       10            12.4               5357.4           
+BFS                          10            10.0               747.4
+DFS (depth limit 20)         10            18.8               24858.0
+DFS (depth limit 50)         10            49.2               92287.3
+Greedy Search (using h1)     10            97.6               7422.7
+A* (using h1)                10            10.0               30.2
+
+
+puzzles with 15-move optimal solutions
+-------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+random                       9             19.44              25077.11           
+BFS                          10            15.0               12672.0
+DFS (depth limit 20)         10            17.8               68659.0
+DFS (depth limit 50)         10            48.6               111406.0
+Greedy Search (using h1)     9             132.55             23823.77
+A* (using h1)                10            15.0               347.7
+
+analysis:
+
+	Given the results, a few things are clear about the use of each algorithim. First, the most
+efficent by far were the BFS and A* algorithims, which always found the solution in the minimum amount
+of states each time, with A* having a distinct speed advantage over every other algorithim as well. The
+only algorithims that had terminated searches were random and Greedy, at the 15 step minimum. Both were 
+ran for 20 minutes before termination. This is given, as they are the most random algorithims. In second
+place behind random for the slowest algorithim was Greedy, with the DFS searches predictably lagging behind
+the more time efficent algorithims.
+
+	As the minimum moves requirement increased, calculuation time and avg. states tested predictably
+rose, too. DFS always stuck close to its depth limit, as it is meant to, and Greedy's average move count
+skyrocketed along with the digitstrings' minimum moves. A* was the clear winner on all fronts, though. Each
+test completed near-instantly with a shocklingly low number of states and a perfect avg. moves count.
+On the non-informed searches front, BFS was very accurate, too, with some efficentcy lost on the amount
+of states it had to compute to get to that minimum moves goal.
+
+
+heuristic h2
+------------
+This heuristic prioritizes the solution that will take the least amount of moves, by not only accounting for how
+many tiles are out of place, but how many are in the wrong row and column. 
+
+puzzles with 18-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)      8            145.75           8345.75
+Greedy (heuristic h2)      10           74.8             254.2 
+
+
+A* (heuristic h1)          10           18.0             1602.0
+A* (heuristic h2)          10           18.0             510.9
+
+puzzles with 21-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)      8            132.0            36660.875
+Greedy (heuristic h2)      10           83.2	         397.7 
+
+
+A* (heuristic h1)          10           21               6301.7
+A* (heuristic h2)          10           21               1499.6
+
+
+puzzles with 24-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)      6            123.66           2856.166
+Greedy (heuristic h2)      10           114.0	         400.4 
+
+
+A* (heuristic h1)          9            24               2639.22
+A* (heuristic h2)          10           24               5303.0
+
+puzzles with 27-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)      4            197.5            4285.5
+Greedy (heuristic h2)      10           117.0	         402.5 
+
+
+A* (heuristic h1)          0            /               /
+A* (heuristic h2)          /            /               /
+
+#i am so sorry it is 11:55 pm and this code runs so slow but i need to turn this in
+TA who is grading this i love you i hope you have a good day
+
+
+Here, it is clear that the h2 heuristic improves performance on all fronts with the
+informed algorithims. Greedy lagged far behind with the more complex digitstrings,
+with searches being terminated after 10 minutes of testing. Yet, with the h2 heuristic,
+results came in seconds and all tests were performed with far fewer states tested.
+A*, the shining star (lol) of the previous tests, too sturggled with the flawed h1
+heuristic and the more complex digitstrings, yet with h2 it performed much faster and
+required less states be tested. By all metrics, h2 is the more intelligent hueristic.
+
