@@ -3,13 +3,9 @@
 #
 # classes for objects that perform state-space search on Eight Puzzles  
 #
-# name: 
-# email:
-#
-# If you worked with a partner, put their contact info below:
-# partner's name:
-# partner's email:
-#
+# name: Brandon Bouley
+# email: bbouley@bu.edu
+
 
 import random
 from state import *
@@ -20,11 +16,11 @@ class Searcher:
         This will also be used as a superclass of classes for
         other state-space search algorithms.
     """
-    ### Add your Searcher method definitions here. ###
+    
     
     def __init__(self, depth_limit):
         """a constructor for a Searcher object, one that tracks 
-        the number of states tested, """
+        the number of states tested"""
         self.states=[]
         self.num_tested=0
         self.depth_limit=depth_limit
@@ -35,7 +31,7 @@ class Searcher:
         """ returns a string representation of the Searcher object
             referred to by self.
         """
-        # You should *NOT* change this method.
+    
         s = type(self).__name__ + ': '
         s += str(len(self.states)) + ' untested, '
         s += str(self.num_tested) + ' tested, '
@@ -92,13 +88,7 @@ class Searcher:
     
     
         
-        
-                
-    
-            
-
-
-### Add your BFSeacher and DFSearcher class definitions below. ###
+# BF Searcher:  
 
 class BFSearcher(Searcher):
     """a searcher that finds the solution in the minimum
@@ -112,6 +102,8 @@ class BFSearcher(Searcher):
         self.states.remove(s)
         return s
     
+# DF Searcher:
+
 class DFSearcher(Searcher):
     """a searcher that reaches the maximum depth it can before 
     returning a solution"""
@@ -129,8 +121,6 @@ def h0(state):
     """ a heuristic function that always returns 0 """
     return 0
 
-### Add your other heuristic functions here. ###
-
 def h1(state):
     """a heuristic function that returns the number of misplaced
     tiles"""
@@ -138,15 +128,14 @@ def h1(state):
 
 def h2(state):
     """ a heuristic function that returns the combined number
-    of tiles in the wrong row and tiles in rthe wrong column"""
+    of tiles in the wrong row and tiles in the wrong column"""
     return state.board.misplaced_rowcol()
 
-
+# Greedy Searcher:
 class GreedySearcher(Searcher):
     """ A class for objects that perform an informed greedy state-space
         search on an Eight Puzzle.
     """
-    ### Add your GreedySearcher method definitions here. ###
     
     def __init__(self,heuristic):
         """constructor for Greedy, only new value is heuristic
@@ -162,7 +151,6 @@ class GreedySearcher(Searcher):
         """ returns a string representation of the GreedySearcher object
             referred to by self.
         """
-        # You should *NOT* change this method.
         s = type(self).__name__ + ': '
         s += str(len(self.states)) + ' untested, '
         s += str(self.num_tested) + ' tested, '
@@ -176,8 +164,6 @@ class GreedySearcher(Searcher):
        
         return -1 * self.heuristic(state)
     
-
-
     def add_state(self, state):
         """modification of add_state to include priority"""
         self.states+=[[self.priority(state) , state]]
@@ -191,11 +177,7 @@ class GreedySearcher(Searcher):
         return s1
         
 
-        
-
-
-
-### Add your AStarSeacher class definition below. ###
+# A* Searcher:
 
 class AStarSearcher(GreedySearcher):
     """informed search algorithm that assigns a priority to
@@ -215,4 +197,3 @@ class AStarSearcher(GreedySearcher):
         return -1 * (self.heuristic(state) + state.num_moves)
     
     
-
