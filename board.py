@@ -5,11 +5,7 @@
 #
 # name: brandon bouley
 # email: bbouley@bu.edu
-#
-# If you worked with a partner, put their contact info below:
-# partner's name:
-# partner's email:
-#
+
 
 # a 2-D list that corresponds to the tiles in the goal state
 GOAL_TILES = [['0', '1', '2'],
@@ -34,9 +30,6 @@ class Board:
         self.blank_r = -1
         self.blank_c = -1
 
-        # Put your code for the rest of __init__ below.
-        # Do *NOT* remove our code above.
-        
         indexcount=0
         
         for r in range(3):
@@ -52,8 +45,6 @@ class Board:
                 indexcount+=1
                 
 
-
-    ### Add your other method definitions below. ###
     
     def __repr__(self):
         """string representation of Board object where the blank
@@ -94,6 +85,7 @@ class Board:
         
         if newblank_c<0 or newblank_c>2 or newblank_r<0 \
            or newblank_r>2:
+           # Checks if the new position determined by parameter direction causes the array to overflow
                
            return False
        
@@ -141,26 +133,33 @@ class Board:
         rowcolval_goal=[]
         misplaced_row=0
         misplaced_col=0
+
+        
         for r in range(len(self.tiles)):
             for c in range(len(self.tiles[0])):
+                # Creates two lists, one which reflects the current state of the board
+                # and another which reflects the goal state of the board.
                 rowcolval_init+=[[r,c,self.tiles[r][c]]]
                 rowcolval_goal+=[[r,c,GOAL_TILES[r][c]]]
        
         for i in rowcolval_init:
             for j in rowcolval_goal:
+                # Compares the current state of the rows to the goal state.
                 if i[-1] == j[-1] and i[0] != j[0] \
                     and i[-1]!='0':
                         
                     misplaced_row+=1
        
         for i in rowcolval_init: 
-            for j in rowcolval_goal: 
+            for j in rowcolval_goal:
+                # Compares the current state of the columns to the goal state.
                 if i[-1] == j[-1] and i[1] != j[1]\
                     and i[-1]!='0':
                         
                     misplaced_col+=1
-        #this is probably the worst way possible to do this
-        #please bear with me
+        # Note: with this method, a tile in the wrong row AND column will be 
+        # weighted twice as much as a tile in the wrong row but correct column
+        # and vice versa.
         
         return misplaced_col+misplaced_row
             

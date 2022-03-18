@@ -3,13 +3,9 @@
 #
 # driver/test code for state-space search on Eight Puzzles   
 #
-# name: 
-# email:
-#
-# If you worked with a partner, put their contact info below:
-# partner's name:
-# partner's email:
-#
+# name: brandon bouley
+# email: bbouley@bu.edu
+
 
 from searcher import *
 from timer import *
@@ -29,8 +25,6 @@ def create_searcher(algorithm, param):
     
     if algorithm == 'random':
         searcher = Searcher(param)
-## You will uncommment the following lines as you implement
-## other algorithms.
     elif algorithm == 'BFS':
         searcher = BFSearcher(param)
     elif algorithm == 'DFS':
