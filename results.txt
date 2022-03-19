@@ -100,18 +100,17 @@ Greedy (heuristic h1)      4            197.5            4285.5
 Greedy (heuristic h2)      10           117.0	         402.5 
 
 
-A* (heuristic h1)          0            /               /
-A* (heuristic h2)          /            /               /
+A* (heuristic h1)          5            27.0            160346.0
+A* (heuristic h2)          10           27.0            27526.8
 
-#i am so sorry it is 11:55 pm and this code runs so slow but i need to turn this in
-TA who is grading this i love you i hope you have a good day
+
 
 
 Here, it is clear that the h2 heuristic improves performance on all fronts with the
 informed algorithims. Greedy lagged far behind with the more complex digitstrings,
 with searches being terminated after 10 minutes of testing. Yet, with the h2 heuristic,
 results came in seconds and all tests were performed with far fewer states tested.
-A*, the shining star (lol) of the previous tests, too sturggled with the flawed h1
+A*, the shining star of the previous tests, too sturggled with the flawed h1
 heuristic and the more complex digitstrings, yet with h2 it performed much faster and
 required less states be tested. By all metrics, h2 is the more intelligent hueristic.
 
